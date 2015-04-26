@@ -1,0 +1,83 @@
+#################################################
+# Mac 向け Pepper Tablet Emulator セットアップ手順  
+#################################################
+
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+NAOqi Python SDK をインストール
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+□ 特定の場所にファイルを保存、環境変数 PYTHONPATH、DYLD_LIBRARY_PATH でパスを指定
+  (※NAOqi Python SDK はアトリエ秋葉原で入手可能)
+
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+nginx インストール、セットアップ
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+□ 次のコマンドを実行
+
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+  brew tap marcqualie/nginx
+
+  brew install nginx
+
+  ln -s ~/.local/share/PackageManager/apps /usr/local/var/www/
+
+□ install_files/nginx の中の nginx.conf ファイル nginx 設定ファイルとしてを設定
+
+  cp install_files/nginx/nginx.conf /usr/local/etc/nginx/
+
+（もし apache web サーバーを稼働している場合は sudo apachectl stop で停止しておく)
+
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+libqi-js のセットアップ
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+□ https://github.com/aldebaran/libqi-js/ 右下 [Download ZIP] ボタンを押して libqi-js のアーカイブを入手
+
+□ ファイルを展開、展開したフォルダーの中に入って次を実行
+
+cp -r libs /usr/local/var/www/
+
+□ qimessaging-json ファイル 1行目を次のように変更
+
+#!/usr/bin/python
+
+  (python2 を python に変更)
+
+□ qimessaging-json ファイル 149,150行目を変更
+
+      #tornadio2.TornadioRouter(QiMessagingHandler1_0, namespace='1.0').urls +　<-- 149行目コメントアウト
+      #tornadio2.TornadioRouter(QiMessagingHandler2, namespace='2').urls,　<-- 150行目コメントアウト
+      #次の１行を追加
+      tornadio2.TornadioRouter(QiMessagingHandler1_0).urls,
+
+□ 変更したファイルを以降利用のために適当な場所に保存 (/usr/local/bin など)
+
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+Pepper Tablet Emulatorのセットアップ
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+当フォルダーにある PepperTabletEmulator.py を適当な場所に保存 (/usr/local/bin など)
+
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+tornadoのインストール
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+□ sudo pip install tornado
+
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+tornadio2 のインストール
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+□ https://github.com/MrJoes/tornadio2 右下 [Downlad ZIP]ボタンを押して、tornadio2 アーカイブファイルを入手
+
+□ ファイルを展開して、展開したフォルダーの中に入って次を実行
+
+sudo ./setup.py install
+
+
+
