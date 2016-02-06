@@ -7,10 +7,14 @@
 NAOqi Python SDK をインストール
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
-□ 特定の場所にファイルを保存、環境変数 PYTHONPATH、DYLD_LIBRARY_PATH でパスを指定
+□ ダウンロード
+
+NAOqi Python SDK を次よりダウンロード
 
 https://community.aldebaran.com/en/resources/software/pepper-sdks-and-documentation-242
 (aldebaran.com にユーザー登録ののち、https://community.aldebaran.com/en/developerprogram#section3 でデベロッパープログラムに登録することでアクセス可能になります）
+
+□ 特定の場所にファイルを保存、環境変数 PYTHONPATH、DYLD_LIBRARY_PATH でパスを指定
 
 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
