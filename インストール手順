@@ -6,8 +6,11 @@
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 NAOqi Python SDK をインストール
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
 □ 特定の場所にファイルを保存、環境変数 PYTHONPATH、DYLD_LIBRARY_PATH でパスを指定
-  (※NAOqi Python SDK はアトリエ秋葉原で入手可能)
+
+https://community.aldebaran.com/en/resources/software/pepper-sdks-and-documentation-242
+(aldebaran.com にユーザー登録ののち、https://community.aldebaran.com/en/developerprogram#section3 でデベロッパープログラムに登録することでアクセス可能になります）
 
 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
@@ -16,13 +19,10 @@ nginx インストール、セットアップ
 
 □ 次のコマンドを実行
 
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-  brew tap marcqualie/nginx
-
   brew install nginx
 
   ln -s ~/.local/share/PackageManager/apps /usr/local/var/www/
+  
 
 □ install_files/nginx の中の nginx.conf ファイル nginx 設定ファイルとしてを設定
 
@@ -40,20 +40,7 @@ libqi-js のセットアップ
 
 cp -r libs /usr/local/var/www/
 
-□ qimessaging-json ファイル 1行目を次のように変更
-
-#!/usr/bin/python
-
-  (python2 を python に変更)
-
-□ qimessaging-json ファイル 149,150行目を変更
-
-      #tornadio2.TornadioRouter(QiMessagingHandler1_0, namespace='1.0').urls +　<-- 149行目コメントアウト
-      #tornadio2.TornadioRouter(QiMessagingHandler2, namespace='2').urls,　<-- 150行目コメントアウト
-      #次の１行を追加
-      tornadio2.TornadioRouter(QiMessagingHandler1_0).urls,
-
-□ 変更したファイルを以降利用のために適当な場所に保存 (/usr/local/bin など)
+□ qimessaging-json を以降利用のために適当な場所に保存 (/usr/local/bin など)
 
 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
