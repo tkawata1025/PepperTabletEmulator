@@ -22,12 +22,15 @@ naoqi の起動
 
 □ 新しくターミナルを開き、Choregraphe のインストールディレクトリ配下の Contents/Resources に移動
 (以下は Choregraphe 2.0.5 の場合)
-
 cd "/Applications/Aldebaran/Choregraphe Suite 2.0/Choregraphe.app/Contents/Resources"
 
-□ 次のコマンドを実行
-DYLD_LIBRARY_PATH=lib bin/naoqi-bin
+(以下は Choregraphe 2.4.2 の場合)
+cd "/Applications/Aldebaran/Choregraphe Suite 2.4/Choregraphe.app/Contents/Resources"
 
+□ 次のコマンドを実行
+
+DYLD_FRAMEWORK_PATH=. DYLD_LIBRARY_PATH=lib bin/naoqi-bin
+ 
 起動に成功すると次が表示される
 NAOqi is ready...
 
@@ -54,8 +57,8 @@ python /<インストール手順で作成した qimessaging-jsonの保存先>/P
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 Choregraphe の起動
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-□ Choregraphe を起動
 
-□ 接続先は IP 127.0.0.1 ポート番号 9559
+(以下は Choregraphe 2.4.2 の場合)
+/Applications/Aldebaran/Choregraphe\ Suite\ 2.4/Choregraphe.app/Contents/Resources/choregraphe -p 9559 
 
 
