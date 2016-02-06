@@ -2,63 +2,6 @@
 # Mac 向け Pepper Tablet Emulator 起動手順  
 #################################################
 
+ターミナルから次を起動
 
-＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-nginx の起動
-＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-
-□ 次のコマンドを実行
-
-sudo nginx
-
-（停止は sudo nginx -s stop）
-
-
-＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-naoqi の起動
-＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-
-□ Choregrapheが起動していないことを確認、起動している場合一旦閉じる
-
-□ 新しくターミナルを開き、Choregraphe のインストールディレクトリ配下の Contents/Resources に移動
-(以下は Choregraphe 2.0.5 の場合)
-cd "/Applications/Aldebaran/Choregraphe Suite 2.0/Choregraphe.app/Contents/Resources"
-
-(以下は Choregraphe 2.4.2 の場合)
-cd "/Applications/Aldebaran/Choregraphe Suite 2.4/Choregraphe.app/Contents/Resources"
-
-□ 次のコマンドを実行
-
-DYLD_FRAMEWORK_PATH=. DYLD_LIBRARY_PATH=lib bin/naoqi-bin
- 
-起動に成功すると次が表示される
-NAOqi is ready...
-
-
-＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-qimessaging-json の起動
-＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-□ 新しくターミナルを開き次を実行
-
-python /<インストール手順で作成した qimessaging-jsonの保存先>/qimessaging-json
-
-正しく起動できると次が表示される
-Will connect to tcp://127.0.0.1:9559
-
-
-＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-タブレットエミュレータサービス の起動
-＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-□ 新しくターミナルを開き次を実行
-
-python /<インストール手順で作成した qimessaging-jsonの保存先>/PepperTabletEmulator.py
-
-
-＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-Choregraphe の起動
-＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-
-(以下は Choregraphe 2.4.2 の場合)
-/Applications/Aldebaran/Choregraphe\ Suite\ 2.4/Choregraphe.app/Contents/Resources/choregraphe -p 9559 
-
-
+Choregraphe2.4_te.sh
