@@ -10,28 +10,22 @@ import sys
 import time
 import os
 
-from naoqi import ALProxy
-from naoqi import ALBroker
-from naoqi import ALModule
-
-from optparse import OptionParser
+import qi
 
 import webbrowser
 
-NAO_IP = "localhost"
+robotIp = "localhost"
 
 
-# Global variable to store the HumanGreeter module instance
-HumanGreeter = None
 memory = None
 
 
-class ALTabletServiceModule(ALModule):
+class ALTabletServiceModule:
     """ ALTabletServiceModule
 
     """
-    def __init__(self, name):
-        ALModule.__init__(self, name)
+    def __init__(self):
+        pass
 
     def cleanWebview(self):
         """ 
@@ -52,7 +46,7 @@ class ALTabletServiceModule(ALModule):
         print i
         if i>1:
             appName = appName[0:i]
-        url = "http://localhost/apps/%s" % appName
+        url = "http://%s/apps/%s" % (robotIp, appName)
         print "loadApplication called %s" % url
         webbrowser.open(url)
 
@@ -65,10 +59,13 @@ class ALTabletServiceModule(ALModule):
         webbrowser.open(_args[0])
         return True
 
-    def showWebview(self):
+    def showWebview(self, *_args):
         """
         """
         print "showWebview called.."
+
+        if len(_args) > 0:
+            self.loadUrl(_args[0])
         return True
 
     def getVideoLength(self):
@@ -212,7 +209,7 @@ class ALTabletServiceModule(ALModule):
         """
         """
         print "robotIp called"
-        return "127.0.0.1"
+        return robotIp
 
     def setBrightness(self, *_args):
         """
@@ -249,50 +246,20 @@ class ALTabletServiceModule(ALModule):
         """
         print "postEventToApplication called.. Not implemented yet.."
 
+    def reloadPage(self, *_args):
+        """
+        """
+        print "reloadPage called.. Not implemented yet.."
+        
 
 
 def main():
-    """ Main entry point
-
-    """
-    parser = OptionParser()
-    parser.add_option("--pip",
-        help="Parent broker port. The IP address or your robot",
-        dest="pip")
-    parser.add_option("--pport",
-        help="Parent broker port. The port NAOqi is listening to",
-        dest="pport",
-        type="int")
-    parser.set_defaults(
-        pip=NAO_IP,
-        pport=9559)
-
-    (opts, args_) = parser.parse_args()
-    pip   = opts.pip
-    pport = opts.pport
-
-    # We need this broker to be able to construct
-    # NAOqi modules and subscribe to other modules
-    # The broker must stay alive until the program exists
-    myBroker = ALBroker("myBroker",
-       "0.0.0.0",   # listen to anyone
-       0,           # find a free port and use it
-       pip,         # parent broker IP
-       pport)       # parent broker port
-
-
-    global ALTabletService
-    ALTabletService = ALTabletServiceModule("ALTabletService")
-
-    try:
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        print
-        print "Interrupted by user, shutting down"
-        myBroker.shutdown()
-        sys.exit(0)
-
+    app = qi.Application()
+    app.start()
+    session = app.session
+    myService = ALTabletServiceModule()
+    session.registerService("ALTabletService", myService)
+    app.run()
 
 
 if __name__ == "__main__":
