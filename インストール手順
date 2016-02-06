@@ -44,14 +44,14 @@ libqi-js のセットアップ
 
 cp -r libs /usr/local/var/www/
 
-□ qimessaging-json を以降利用のために適当な場所に保存 (/usr/local/bin など)
+□ qimessaging-json を /usr/local/bin に保存
 
 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 Pepper Tablet Emulatorのセットアップ
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
-当フォルダーにある PepperTabletEmulator.py を適当な場所に保存 (/usr/local/bin など)
+当フォルダーにある PepperTabletEmulator.py を /usr/local/bin に保存
 
 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
