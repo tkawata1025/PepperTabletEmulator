@@ -48,7 +48,7 @@ class ALTabletServiceModule:
             appName = appName[0:i]
         url = "http://%s/apps/%s" % (robotIp, appName)
         print "loadApplication called %s" % url
-        webbrowser.open(url)
+        webbrowser.open(url, new=0)
 
         return True
 
@@ -56,7 +56,7 @@ class ALTabletServiceModule:
         """
         """
         print "loadUrl called open URL: %s" % _args[0]
-        webbrowser.open(_args[0])
+        webbrowser.open(_args[0],new=0)
         return True
 
     def showWebview(self, *_args):
@@ -136,7 +136,7 @@ class ALTabletServiceModule:
         """
         """
         print "showImage called open URL: %s" % _args[0]
-        webbrowser.open(_args[0])
+        webbrowser.open(_args[0], new=0)
         return True
 
 
