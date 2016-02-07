@@ -8,15 +8,21 @@ NAOqi Python SDK をインストール
 
 □ ダウンロード
 
-NAOqi Python SDK を次よりダウンロード
+NAOqi Python SDK (Python 2.7 SDK 2.4.2 Mac 64) を次よりダウンロード 
 
 https://community.aldebaran.com/en/resources/software/pepper-sdks-and-documentation-242
-(aldebaran.com にユーザー登録ののち、https://community.aldebaran.com/en/developerprogram#section3 でデベロッパープログラムに登録することでアクセス可能になります）
 
-□ 特定の場所にファイルを保存 例えば ユーザーディレクトリの naoqi ディレクトリ配下に保存 
-　例：
-　  mkdir -p ~/naoqi
-　  cp -r pynaoqi-python2.7-2.4.2.26-mac64  ~/naoqi
+(リソースにアクセスするには Aldebara デベロッパープログラムに登録しておく必要があります。
+まず https://store.aldebaran.com/default/customer/account/create/ でユーザー登録、次に
+https://community.aldebaran.com/en/developerprogram#section3 でデベロッパープログラムに登録します）
+
+□ ダウンロードしたファイルを展開
+
+□ 展開したファイルを特定の場所にファイルを保存 例えば ユーザーディレクトリの naoqi ディレクトリ配下に保存 
+
+例：
+mkdir -p ~/naoqi
+cp -r pynaoqi-python2.7-2.4.2.26-mac64  ~/naoqi
 　  
 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
@@ -24,27 +30,29 @@ nginx インストール、セットアップ
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 □ インストール
 
-  brew install nginx
+brew install nginx
 
-□ セットアップ
+(※ brew をまだセットアップしていない場合、まず http://brew.sh/index_ja.html を参考に homebrew をインストールします)
 
-  mkdir -p ~/.local/share/PackageManager/apps
+□ エミュレータ用セットアップ
+
+mkdir -p ~/.local/share/PackageManager/apps
   
-  ln -s ~/.local/share/PackageManager/apps /usr/local/var/www/
+ln -s ~/.local/share/PackageManager/apps /usr/local/var/www/
 
 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 libqi-js のセットアップ
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-□ https://github.com/aldebaran/libqi-js/ 右下 [Download ZIP] ボタンを押して libqi-js のアーカイブを入手
+□ https://github.com/aldebaran/libqi-js/ ページの [Download ZIP] ボタンを押して libqi-js のアーカイブを入手
 
 □ ファイルを展開、展開したフォルダーの中に入って次を実行
 
-  cp -r libs /usr/local/var/www/
+cp -r libs /usr/local/var/www/
 
 □ qimessaging-json を /usr/local/bin に保存
 
-  cp qimessaging-json  /usr/local/bin 
+cp qimessaging-json  /usr/local/bin 
 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 tornadoのインストール
@@ -52,6 +60,9 @@ tornadoのインストール
 
 □ sudo pip install tornado
 
+(※ pip をまだ設定していない場合、次のコマンドを実行してまず pip をインストールします 
+sudo easy_install pip 
+)
 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 tornadio2 のインストール
@@ -66,18 +77,20 @@ sudo ./setup.py install
 Pepper Tablet Emulatorのセットアップ
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
+□ 作業用ディレクトリを作成、移動
+
 □ 次のコマンドを実行
 
-  git clone https://github.com/tkawata1025/PepperTabletEmulator.git
+git clone https://github.com/tkawata1025/PepperTabletEmulator.git
 
-  cd PepperTabletEmulator
+cd PepperTabletEmulator
 
-  cp install_files/PepperTabletEmulator.py /usr/local/bin/
+cp install_files/PepperTabletEmulator.py /usr/local/bin/
 
-  cp install_files/nginx/nginx.conf /usr/local/etc/nginx/
+cp install_files/nginx/nginx.conf /usr/local/etc/nginx/
 
 □ Choregraphe2.4_te.sh　をテキストエディタで開き３行目を変更を環境に合わせて任意に変更
 
 -----
 NAOQISDK="$HOME/naoqi/pynaoqi-python2.7-2.4.2.26-mac64" # <--- NAOqi Python SDK を保存した場所で書き換える
------
+
