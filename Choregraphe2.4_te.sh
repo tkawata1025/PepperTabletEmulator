@@ -24,6 +24,19 @@ kill %1
 kill %2
 kill %3
 
+sleep 5
+
+echo ""
+echo "終了しました！"
+echo "まれにバックグラウンドプロセスが残っている場合があります"
+echo "プロセスが残っていると次回の Choregraphe の起動時"
+echo "バーチャルロボットがうまく機能しないことがあります"
+echo "おかしいなと思ったら、一旦 Choregrape を停止"
+echo "ps -ef コマンドで naoqi-bin と qimessaging-json "
+echo "というプロセスが動いていないか確認、動いていたら kill "
+echo "コマンドで停止させてください"
+echo ""
+
 
 
 
