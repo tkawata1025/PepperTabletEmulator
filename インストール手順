@@ -2,7 +2,6 @@
 # Mac 向け Pepper Tablet Emulator セットアップ手順  
 #################################################
 
-
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 NAOqi Python SDK をインストール
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
@@ -15,23 +14,23 @@ https://community.aldebaran.com/en/resources/software/pepper-sdks-and-documentat
 (aldebaran.com にユーザー登録ののち、https://community.aldebaran.com/en/developerprogram#section3 でデベロッパープログラムに登録することでアクセス可能になります）
 
 □ 特定の場所にファイルを保存 例えば ユーザーディレクトリの naoqi ディレクトリ配下に保存 
+　例：
+　  mkdir -p ~/naoqi
+　  cp -r pynaoqi-python2.7-2.4.2.26-mac64  ~/naoqi
+　  
 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 nginx インストール、セットアップ
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-
-□ 次のコマンドを実行
+□ インストール
 
   brew install nginx
 
-  ln -s ~/.local/share/PackageManager/apps /usr/local/var/www/
+□ セットアップ
+
+  mkdir -p ~/.local/share/PackageManager/apps
   
-
-□ install_files/nginx の中の nginx.conf ファイル nginx 設定ファイルとしてを設定
-
-  cp install_files/nginx/nginx.conf /usr/local/etc/nginx/
-
-（もし apache web サーバーを稼働している場合は sudo apachectl stop で停止しておく)
+  ln -s ~/.local/share/PackageManager/apps /usr/local/var/www/
 
 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
@@ -41,17 +40,11 @@ libqi-js のセットアップ
 
 □ ファイルを展開、展開したフォルダーの中に入って次を実行
 
-cp -r libs /usr/local/var/www/
+  cp -r libs /usr/local/var/www/
 
 □ qimessaging-json を /usr/local/bin に保存
 
-
-＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-Pepper Tablet Emulatorのセットアップ
-＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-
-当フォルダーにある PepperTabletEmulator.py を /usr/local/bin に保存
-
+  cp qimessaging-json  /usr/local/bin 
 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 tornadoのインストール
@@ -70,17 +63,21 @@ tornadio2 のインストール
 sudo ./setup.py install
 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-起動スクリプトのカスタマイズ
+Pepper Tablet Emulatorのセットアップ
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
-Choregraphe2.4_te.sh　を開き
+□ 次のコマンドを実行
 
-次の２行を変更 NAOqi python を保存している場所を設定する
+  git clone https://github.com/tkawata1025/PepperTabletEmulator.git
+
+  cd PepperTabletEmulator
+
+  cp install_files/PepperTabletEmulator.py /usr/local/bin/
+
+  cp install_files/nginx/nginx.conf /usr/local/etc/nginx/
+
+□ Choregraphe2.4_te.sh　をテキストエディタで開き３行目を変更を環境に合わせて任意に変更
 
 -----
-export DYLD_LIBRARY_PATH=<NAOqi python SDK をコピーした場所>:$DYLD_LIBRARY_PATH
-export PYTHONPATH=<NAOqi python SDK をコピーした場所>:$PYTHONPATH 
+NAOQISDK="$HOME/naoqi/pynaoqi-python2.7-2.4.2.26-mac64" # <--- NAOqi Python SDK を保存した場所で書き換える
 -----
-
-
-
