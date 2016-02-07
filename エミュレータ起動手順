@@ -2,6 +2,11 @@
 # Mac 向け Pepper Tablet Emulator 起動手順  
 #################################################
 
-ターミナルから次を起動
 
-Choregraphe2.4_te.sh
+1. nginx を起動
+
+sudo nginx
+
+2. ターミナルから次を起動
+
+./Choregraphe2.4_te.sh
