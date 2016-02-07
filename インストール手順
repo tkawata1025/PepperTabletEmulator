@@ -14,8 +14,7 @@ NAOqi Python SDK を次よりダウンロード
 https://community.aldebaran.com/en/resources/software/pepper-sdks-and-documentation-242
 (aldebaran.com にユーザー登録ののち、https://community.aldebaran.com/en/developerprogram#section3 でデベロッパープログラムに登録することでアクセス可能になります）
 
-□ 特定の場所にファイルを保存、環境変数 PYTHONPATH、DYLD_LIBRARY_PATH でパスを指定
-
+□ 特定の場所にファイルを保存 例えば ユーザーディレクトリの naoqi ディレクトリ配下に保存 
 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 nginx インストール、セットアップ
@@ -69,6 +68,19 @@ tornadio2 のインストール
 □ ファイルを展開して、展開したフォルダーの中に入って次を実行
 
 sudo ./setup.py install
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+起動スクリプトのカスタマイズ
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+Choregraphe2.4_te.sh　を開き
+
+次の２行を変更 NAOqi python を保存している場所を設定する
+
+-----
+export DYLD_LIBRARY_PATH=<NAOqi python SDK をコピーした場所>:$DYLD_LIBRARY_PATH
+export PYTHONPATH=<NAOqi python SDK をコピーした場所>:$PYTHONPATH 
+-----
 
 
 
