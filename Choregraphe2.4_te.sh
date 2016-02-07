@@ -1,25 +1,26 @@
 #!/bin/bash
 
-cd "/Applications/Aldebaran/Choregraphe Suite 2.4/Choregraphe.app/Contents/Resources"
+NAOQISDK = ~/naoqi/pynaoqi-python2.7-2.4.2.26-mac64 # <--- NAOqi Python SDK を保存した場所で書き換える
 
-DYLD_FRAMEWORK_PATH=. DYLD_LIBRARY_PATH=lib bin/naoqi-bin &
+CHOREGRAPHEDIR = "/Applications/Aldebaran/Choregraphe Suite 2.4" # <-- Choregraphe のインストールディレクトリ
+
+cd $CHOREGRAPHEDIR
+
+DYLD_FRAMEWORK_PATH=Choregraphe.app/Contents/Resources DYLD_LIBRARY_PATH=Choregraphe.app/Contents/Resources/lib bin/naoqi-bin &
 
 sleep 5
 
-export DYLD_LIBRARY_PATH=<NAOqi python SDK をコピーした場所>:$DYLD_LIBRARY_PATH
-export PYTHONPATH=<NAOqi python SDK をコピーした場所>:$PYTHONPATH 
+export DYLD_LIBRARY_PATH=$NAOQISDK:$DYLD_LIBRARY_PATH
+export PYTHONPATH=$NAOQISDK:$PYTHONPATH 
 
 /usr/bin/python /usr/local/bin/qimessaging-json &
 /usr/bin/python /usr/local/bin/PepperTabletEmulator.py & 
 
-/Applications/Aldebaran/Choregraphe\ Suite\ 2.4/Choregraphe.app/Contents/Resources/choregraphe -p 9559 
+Choregraphe.app/Contents/MacOS/choregraphe -p 9559 
 
 kill %1
 kill %2
 kill %3
-
-
-
 
 
 
