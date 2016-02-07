@@ -93,4 +93,17 @@ cp install_files/nginx/nginx.conf /usr/local/etc/nginx/
 
 -----
 NAOQISDK="$HOME/naoqi/pynaoqi-python2.7-2.4.2.26-mac64" # <--- NAOqi Python SDK を保存した場所で書き換える
+-----
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+Mac OS X El Capitan の場合 - SDK へのパッチ
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+Mac OS X El Capitan を使っている場合、次を参考に Python SDK にパッチを当てます
+
+http://qiita.com/tkawata1025/items/31dd49bcef04c85b3047
+
+
+
+
 
